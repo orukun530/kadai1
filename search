@@ -1,0 +1,28 @@
+import pandas as pd
+def search():
+    ### 検索ツール
+    df=pd.read_csv("list.csv")
+    source=list(df["name"])
+
+    while True:
+
+        word =input("鬼滅の登場人物の名前を入力してください >>> ")
+    
+    ### ここに検索ロジックを書く
+        if word in source:
+            print("{}は見つかりました。".format(word))
+        else:
+            print("{}は見つかりませんでした。".format(word))
+            add_name = input("人物を追加しますか？(0:追加 1:追加しない)>>")
+            if add_name =="0":
+                source.append(word)
+         
+
+        df=pd.DataFrame(source,columns=["name"])
+        df.to_csv("list.csv",encoding="utf_8")
+        print(source)
+
+
+if __name__ == "__main__":
+    search()
+  
